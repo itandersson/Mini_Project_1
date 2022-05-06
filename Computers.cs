@@ -2,23 +2,36 @@
 
 namespace Mini_Project_1
 {
-
-	public abstract class MobilePhones : Assets
+	public abstract class Computers : Assets
 	{
 		public override string ToString()
 		{
 			string outPut = (this.type).PadRight(10) + (this.brand).PadRight(10) + (this.model).PadRight(15) +
-				(this.office).PadRight(10) + (this.purchaseDate).ToString("yy/MM/dd").PadRight(16) +
+				(this.office).PadRight(10) + (this.purchaseDate).ToString("yy/MM/dd").PadRight(16) + 
 				(this.price).ToString().PadRight(15) + (this.currency).PadRight(10);
 
 			return outPut;
 		}
 	}
 
-	public class Iphone : MobilePhones
+    public class MacBook : Computers
+    {
+        public MacBook(DateTime purchaseDate, int price, string type, string brand, string model,string office, string currency)
+        {
+			base.purchaseDate = purchaseDate;
+			base.price = price;
+			base.type = type;
+			base.brand = brand;
+			base.model = model;
+			base.office = office;
+			base.currency = currency;
+        }
+    }
+
+    public class Asus : Computers
 	{
 
-		public Iphone(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
+		public Asus(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
 		{
 			base.purchaseDate = purchaseDate;
 			base.price = price;
@@ -30,25 +43,10 @@ namespace Mini_Project_1
 		}
 	}
 
-	public class Samsung : MobilePhones
+	public class Lenovo : Computers
 	{
 
-		public Samsung(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
-		{
-			base.purchaseDate = purchaseDate;
-			base.price = price;
-			base.type = type;
-			base.brand = brand;
-			base.model = model;
-			this.office = office;
-			base.currency = currency;
-		}
-	}
-
-	public class Nokia : MobilePhones
-	{
-
-		public Nokia(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
+		public Lenovo(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
 		{
 			base.purchaseDate = purchaseDate;
 			base.price = price;
@@ -60,10 +58,10 @@ namespace Mini_Project_1
 		}
 	}
 
-	public class Motorola : MobilePhones
+	public class HP : Computers
 	{
 
-		public Motorola(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
+		public HP(DateTime purchaseDate, int price, string type, string brand, string model, string office, string currency)
 		{
 			base.purchaseDate = purchaseDate;
 			base.price = price;
