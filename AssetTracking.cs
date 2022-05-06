@@ -31,6 +31,42 @@ namespace Mini_Project_1
             List<Assets> SortedPurchase = assetList.OrderBy(item => item.purchaseDate).ToList<Assets>();
             asset.setList( SortedPurchase );
             asset.printSortedList();
+
+            input();
         }
+
+        static void input() 
+        {
+            string welcome = "Welcome to ToDoLy\n" +
+                "You have " + x + " tasks todo and " + y + " tasks are done!\n\n" +
+                "(1) Show Task List (by date or project)\n" +
+                "(2) Add New Task\n" +
+                "(3) Edit Task (update, mark as done, remove)\n" +
+                "(4) Save and Quit\n";
+
+            while (run)
+            {
+                Console.WriteLine(welcome);
+                Console.Write("Pick an option: ");
+                int value = int.Parse(Console.ReadLine());
+
+                switch (value)
+                {
+                    case 1:
+                        showTaskList(list);
+                        continue;
+                    case 2:
+                        Task item = addNewTask();
+                        list.Add(item);
+                        Console.WriteLine('\t' + "Thank you, a new task was successfully added." + '\n');
+                        continue;
+                    case 3:
+                        editTask(list);
+                        continue;
+                    case 4:
+                        run = false;
+                        break;
+                }
+            }
     }
 }
