@@ -29,7 +29,9 @@ namespace Mini_Project_1
 			Console.WriteLine(outPut);
 			Console.WriteLine("____________________________________________________________________________________");
 
+
 			//Print assets in red if older than 3 years and 3 month
+			//And assets in gellow if older than 3 years and 6 month
 			foreach (Assets asset in assets)
 			{
 				int res = DateTime.Compare(endOfLife, asset.purchaseDate);
