@@ -31,6 +31,10 @@ namespace Mini_Project_1
             input(asset);
         }
 
+        /// <summary>
+        /// Manages user interface
+        /// </summary>
+        /// <param name="asset"></param>
         private static void input(Assets asset)
         {
             bool run = true;
@@ -73,6 +77,10 @@ namespace Mini_Project_1
                 }
             }
         }
+
+        /// <summary>
+        /// Creates a new asset if no error
+        /// </summary>
         private static void addNewAsset()
         {
             Console.Write("\tEnter purchase date (Ex: 2022/05/09): ");
@@ -108,6 +116,16 @@ namespace Mini_Project_1
 
         }
 
+        /// <summary>
+        /// Returns a new asset if no error occurred
+        /// </summary>
+        /// <param name="purchaseDate"></param>
+        /// <param name="price"></param>
+        /// <param name="type"></param>
+        /// <param name="brand"></param>
+        /// <param name="model"></param>
+        /// <param name="office"></param>
+        /// <returns></returns>
         private static Assets createAsset(string purchaseDate, int price, string type, string brand, string model, string office)
         {
             bool fail = false;

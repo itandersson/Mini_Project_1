@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Mini_Project_1
 {
+	/// <summary>
+	/// Describes a asset
+	/// </summary>
 	public class Assets
 	{
 		private static List<Assets> assets = new List<Assets>();
@@ -31,7 +34,7 @@ namespace Mini_Project_1
 
 
 			//Print assets in red if older than 3 years and 3 month
-			//And assets in gellow if older than 3 years and 6 month
+			//Todo: Add assets in gellow if older than 3 years and 6 month
 			foreach (Assets asset in assets)
 			{
 				int res = DateTime.Compare(endOfLife, asset.purchaseDate);
