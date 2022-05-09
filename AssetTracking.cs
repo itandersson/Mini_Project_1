@@ -113,70 +113,92 @@ namespace Mini_Project_1
             bool fail = false;
             Assets asset = null;
             string currency = "";
+            type = "" + char.ToUpper(type[0]) + type.Substring(1);
 
             brand = brand.ToLower();
             office = office.ToLower();
 
-            //Assign currency by office
-            switch (office)
+            //Return a error if exceptions occurred
+            try
             {
+
+                //Assign currency by office
+                switch (office)
+                {
                 case "spain":
                     currency = "EUR";
+                    office = "" + char.ToUpper(office[0]) + office.Substring(1);
                     break;
 
                 case "sweden":
                     currency = "SEK";
+                    office = "" + char.ToUpper(office[0]) + office.Substring(1);
                     break;
 
                 case "usa":
                     currency = "USD";
+                    office = office.ToUpper();
                     break;
 
                 default:
                     fail = true;
-                    Console.WriteLine("Error: \"" + office + "\" does not exist!");
+                    Console.WriteLine('\t' + "Error: \"" + office + "\" does not exist!");
                     break;
+                }
+
+                //Create asset if brand match
+                switch (brand)
+                {
+                    case "macbook":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new MacBook(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "asus":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new Asus(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "lenovo":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new Lenovo(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "hp":
+                        brand = brand.ToUpper();
+                        asset = new HP(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "iphone":
+                        brand = "" + brand[0] + char.ToUpper(brand[1]) + brand.Substring(2);
+                        asset = new Iphone(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "samsung":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new Samsung(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "nokia":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new Nokia(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    case "motorola":
+                        brand = "" + char.ToUpper(brand[0]) + brand.Substring(1);
+                        asset = new Motorola(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
+                        break;
+
+                    default:
+                        fail = true;
+                        Console.WriteLine('\t' + "Error: \"" + brand + "\" is not a allowed brand!");
+                        break;
+                }
             }
-
-            //Create asset if brand match
-            switch (brand)
+            catch (Exception e) 
             {
-                case "macbook":
-                    asset = new MacBook(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "asus":
-                    asset = new Asus(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "lenovo":
-                    asset = new Lenovo(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "hp":
-                    asset = new HP(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "iphone":
-                    asset = new Iphone(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "samsung":
-                    asset = new Samsung(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "nokia":
-                    asset = new Nokia(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                case "motorola":
-                    asset = new Motorola(DateTime.Parse(purchaseDate), price, type, brand, model, office, currency);
-                    break;
-
-                default:
-                    fail = true;
-                    Console.WriteLine("Error: \"" + brand + "\" is not a allowed brand!");
-                    break;
+                fail = true;
+                Console.WriteLine('\t' + "Error: " + e.Message );
             }
 
             //if an error occurred, ensure that null is returned
